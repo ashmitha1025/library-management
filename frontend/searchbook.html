@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search Book</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+/* Card */
+.container {
+  background: white;
+  padding: 40px;
+  width: 320px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Title */
+h2 {
+  margin-bottom: 20px;
+  color: #ff4d6d;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #ff4d6d;
+  box-shadow: 0 0 6px rgba(255,77,109,0.4);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758c);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255,77,109,0.4);
+}
+
+/* Back button */
+.back {
+  margin-top: 10px;
+  background: #ccc;
+  color: black;
+}
+
+.back:hover {
+  background: #999;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+  <h2>🔍 Search Book</h2>
+
+  <input id="search" placeholder="Enter Book Name">
+
+  <button onclick="search()">Search</button>
+  <button class="back" onclick="goBack()">⬅ Back</button>
+</div>
+
+<script>
+function search(){
+  const value = document.getElementById("search").value;
+
+  if(value.trim() === ""){
+    alert("Please enter a book name 💗");
+    return;
+  }
+
+  localStorage.setItem("book", value);
+  window.location.href = "results.html";
+}
+
+function goBack(){
+  window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

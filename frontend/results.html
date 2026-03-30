@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search Results</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  text-align: center;
+}
+
+/* Title */
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Results container */
+#results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Book card */
+.card {
+  background: white;
+  width: 300px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Book name */
+.card h3 {
+  color: #ff4d6d;
+}
+
+/* Author */
+.card p {
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Back button */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  color: #ff4d6d;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffe6ec;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>💗 Search Results</h2>
+
+<div id="results"></div>
+
+<button onclick="goBack()">⬅ Back</button>
+
+<script>
+async function load(){
+  const name = localStorage.getItem("book");
+
+  const res = await fetch(`/api/search?name=${name}`);
+  const data = await res.json();
+
+  if(data.length === 0){
+    document.getElementById("results").innerHTML = "<p style='color:white;'>No books found 💔</p>";
+    return;
+  }
+
+  document.getElementById("results").innerHTML =
+    data.map(b => `
+      <div class="card">
+        <h3>${b.name}</h3>
+        <p>Author: ${b.author}</p>
+      </div>
+    `).join("");
+}
+
+function goBack(){
+  window.location.href = "searchbook.html";
+}
+
+load();
+</script>
+
+</body>
+</html>

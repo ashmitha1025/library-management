@@ -1,0 +1,20 @@
+-- USERS TABLE
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(100),
+  password VARCHAR(100)
+);
+
+-- BOOKS TABLE
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  author VARCHAR(100)
+);
+
+-- ISSUED BOOKS TABLE
+CREATE TABLE issued (
+  id SERIAL PRIMARY KEY,
+  student VARCHAR(100),
+  book VARCHAR(100)
+);

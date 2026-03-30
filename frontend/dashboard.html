@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+/* Card Container */
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Title */
+h1 {
+  margin-bottom: 25px;
+  color: #ff4d6d;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758c);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover Effect */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255,77,109,0.4);
+}
+
+/* Optional logout */
+.logout {
+  margin-top: 15px;
+  background: #ccc;
+  color: black;
+}
+
+.logout:hover {
+  background: #999;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+  <h1>💗 Dashboard</h1>
+
+  <button onclick="go('addbook.html')">Add Book</button>
+  <button onclick="go('searchbook.html')">Search Book</button>
+  <button onclick="go('issue.html')">Issue Book</button>
+
+  <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<script>
+function go(page){
+  window.location.href = page;
+}
+
+function logout(){
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
